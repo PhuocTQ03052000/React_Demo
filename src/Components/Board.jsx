@@ -12,14 +12,18 @@ const style ={
 }
 
 const Board = (props) => {
-    <div style={style}>
-        {[...Array(9)].map((_, index) => (
-            <Box 
-                key={index}
-                onClick={() => props.onClick} value={props.value[index]} index={index}
-            />
-        ))}
-    </div> 
+    return(
+        <div style={style}>
+            {[...Array(9)].map((_, index) => (
+                <Box 
+                    key={index}
+                    onClick={props.onClick} 
+                    value={props.value[index]} 
+                    index={index}
+                />
+            ))}
+        </div>
+    )
 }
 
 export default Board

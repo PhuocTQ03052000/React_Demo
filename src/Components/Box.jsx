@@ -8,9 +8,11 @@ const style = {
 }
 
 const Box = (props) => {
-    <button style={style} onclick={() => props.onclick(props.index)}>
-        {props.value}
-    </button>
+    return(
+        <button style={style} onClick={() => props.onClick(props.index)}>
+            {props.value}
+        </button>
+    )
 }
 
 export default Box
