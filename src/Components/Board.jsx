@@ -1,29 +1,20 @@
-import React from 'react'
-import Box from './Box'
-//Render mảng 9 phần tử
+import Strike from "./Strike";
+import Tile from "./Tile";
 
-const style ={
-    width: "250px",
-    height: "250px",
-    margin: "0 auto",
-    display: "grid",
-    gridTemplate: "repeat(3, 1fr) / repeat(3, 1fr)"
-
-}
-
-const Board = (props) => {
-    return(
-        <div style={style}>
+function Board({ tiles, onTileClick, playerTurn, strikeClass }) {
+    return (
+        <div className="board">
             {[...Array(9)].map((_, index) => (
-                <Box 
+                <Tile
+                    playerTurn={playerTurn}
                     key={index}
-                    onClick={props.onClick} 
-                    value={props.value[index]} 
-                    index={index}
+                    onClick={() => onTileClick(index)}
+                    value={tiles[index]}
                 />
             ))}
+            <Strike />
         </div>
-    )
+    );
 }
 
-export default Board
+export default Board;
