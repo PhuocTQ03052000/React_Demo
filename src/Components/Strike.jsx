@@ -1,9 +1,8 @@
-function Strike({ strikeClass }) {
-    return (
-        <div className={`strike ${strikeClass}`}>
+import React from 'react';
 
-        </div>
-    );
+
+function Strike({ strikeClass }) {
+    return <div className={`strike ${strikeClass}`}></div>;
 }
 
 export default Strike;

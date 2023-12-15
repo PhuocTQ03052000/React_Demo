@@ -12,7 +12,7 @@ function Board({ tiles, onTileClick, playerTurn, strikeClass }) {
                     value={tiles[index]}
                 />
             ))}
-            <Strike />
+            <Strike strikeClass={strikeClass} />
         </div>
     );
 }
