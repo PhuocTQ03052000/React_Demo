@@ -4,7 +4,7 @@ function Tile({ className, value, onClick, playerTurn }) {
     if(value == null && playerTurn != null){
         hoverClass = `${playerTurn.toLowerCase()}-hover`;
     }
-
+    
     return (  
     <div 
         onClick={onClick} 
