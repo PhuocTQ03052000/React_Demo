@@ -1,6 +1,11 @@
+import React from 'react';
 import GameState from "./GameState";
 
-function GameOver({gameState}) {
+type GameStateProps  = {
+    gameState: number
+}
+
+function GameOver({ gameState }: GameStateProps ) {
     switch (gameState) {
         case GameState.inProgress: 
             return <></>;

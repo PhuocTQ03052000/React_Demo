@@ -21,7 +21,7 @@ const winningCombinations = [
     { combo: [0, 4, 8], strikeClass: "strike-diagonal-1" },
     { combo: [2, 4, 6], strikeClass: "strike-diagonal-2" },
   ];
-function checkWinner(tiles, setStrikeClass, setGameState){
+function checkWinner(tiles: string[], setStrikeClass: (strikeClas: string) => void, setGameState: (gameState: number) => void){
     for (const { combo, strikeClass } of winningCombinations) {
         const tileValue1 = tiles[combo[0]];
         const tileValue2 = tiles[combo[1]];
@@ -48,20 +48,21 @@ function checkWinner(tiles, setStrikeClass, setGameState){
 }
 
 function TicTacToe(){
+    type nextPlayerType = string | null;
     const [tiles, setTiles] = useState(Array(9).fill(null));
     const [playerTurn, setPlayerTurn] = useState(PLAYER_X);
-    const [nextPlayer, setNextPlayer] = useState(null);
-    const [strikeClass, setStrikeClass] = useState();
+    const [nextPlayer, setNextPlayer] = useState<nextPlayerType>(null);
+    const [strikeClass, setStrikeClass] = useState('');
     const [gameState, setGameState] = useState(GameState.inProgress);
     const handleReset = () => {
         setGameState(GameState.inProgress);
         setTiles(Array(9).fill(null));
         setPlayerTurn(PLAYER_X);
-        setStrikeClass(null);
+        setStrikeClass(undefined);
         setNextPlayer(null);
     }
 
-    const handleTileClick = (index) => {
+    const handleTileClick = (index: number) => {
         if(gameState !== GameState.inProgress) return;
         //when tile hava value dont render value again
         if(tiles[index] !== null){
