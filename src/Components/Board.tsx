@@ -14,6 +14,7 @@ function Board(prop: Props) {
         <div className="board">
             {[...Array(9)].map((_, index) => (
                 <Tile
+                    dataTestId='tile-test'
                     playerTurn={prop.playerTurn}
                     key={index}
                     onClick={() => prop.onTileClick(index)}

@@ -97,7 +97,7 @@ function TicTacToe(){
             />
             <p>{nextPlayer}</p>
             <GameOver gameState={gameState}/>
-            <Reset gameState={gameState} onReset={handleReset}/>
+            <Reset dataTestId='reset-test' gameState={gameState} onReset={handleReset}/>
         </div>
     );
 }

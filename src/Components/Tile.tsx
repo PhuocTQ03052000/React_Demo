@@ -5,9 +5,10 @@ interface Props {
     value: string;
     onClick: () => void;
     playerTurn: string;
+    dataTestId?: string;
 }
 
-function Tile(prop: Props )  {
+function Tile({ dataTestId = "", ...prop}: Props )  {
     let hoverClass: string | null = null;
     
     if(prop.value == null && prop.playerTurn != null){
@@ -16,6 +17,7 @@ function Tile(prop: Props )  {
     
     return (  
     <div 
+        data-testid={dataTestId}
         onClick={prop.onClick} 
         className={`tile ${prop.className} ${hoverClass}`}>
         {prop.value}

@@ -4,13 +4,14 @@ import GameState from "./GameState";
 interface Props {
     gameState: number;
     onReset: () => void;
+    dataTestId?: string;
 }
 
-function Reset(prop: Props) {
+function Reset({ dataTestId = "", ...prop }: Props) {
     if(prop.gameState === GameState.inProgress) return;
 
     return (
-        <button onClick={prop.onReset} className="reset-button">Reset</button>
+        <button data-testid={dataTestId} onClick={prop.onReset} className="reset-button">Reset</button>
     );
 }
 
