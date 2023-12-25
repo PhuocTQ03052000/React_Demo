@@ -31,6 +31,10 @@ p{
   border: 1px solid #1cdd36;
 }
 
+.tile:first-child{
+  background-color: red;
+}
+
 .x-hover:hover::after {
   content: "X";
   opacity: 0.4;

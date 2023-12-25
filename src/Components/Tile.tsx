@@ -9,7 +9,7 @@ interface Props {
 
 function Tile(prop: Props )  {
     let hoverClass: string | null = null;
-
+    
     if(prop.value == null && prop.playerTurn != null){
         hoverClass = `${prop.playerTurn.toLowerCase()}-hover`;
     }
