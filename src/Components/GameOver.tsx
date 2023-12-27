@@ -2,20 +2,21 @@ import React from 'react';
 import GameState from "./GameState";
 
 type GameStateProps  = {
-    gameState: number
+    gameState: number;
+    dataTestStateId?: string;
 }
 
-function GameOver({ gameState }: GameStateProps ) {
+function GameOver({ dataTestStateId = "", gameState}: GameStateProps) {
     switch (gameState) {
         case GameState.inProgress: 
-            return <></>;
+            return <div data-testid={dataTestStateId}></div>;
         case GameState.playerOWin: 
-            return <div className="game-over">O Wins</div>;
+            return <div className="game-over" data-testid={dataTestStateId}>O Wins</div>;
         case GameState.playerXWin: 
-            return <div className="game-over">X Wins</div>;
+            return <div className="game-over" data-testid={dataTestStateId}>X Wins</div>;
         case GameState.draw: 
-            return <div className="game-over">Draw</div>;
-        default: return <></>;
+            return <div className="game-over" data-testid={dataTestStateId}>Draw</div>;
+        default: return <div data-testid={dataTestStateId}></div>;
     }
 }
 

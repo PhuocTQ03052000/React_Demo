@@ -7,14 +7,16 @@ interface Props {
     strikeClass: string;
     onTileClick: (index: number) => void;
     playerTurn: string;
+    dataTestBoardId?: string;
+    dataTestTileId?: string;
 }
 
-function Board(prop: Props) {
+function Board({ dataTestBoardId = "", ...prop}: Props ) {
     return (
-        <div className="board">
+        <div className="board" data-testid={dataTestBoardId}>
             {[...Array(9)].map((_, index) => (
                 <Tile
-                    dataTestId='tile-test'
+                    dataTestTileId='tile-test'
                     playerTurn={prop.playerTurn}
                     key={index}
                     onClick={() => prop.onTileClick(index)}

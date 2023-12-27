@@ -51,7 +51,7 @@ function TicTacToe(){
     type nextPlayerType = string | null;
     const [tiles, setTiles] = useState(Array(9).fill(null));
     const [playerTurn, setPlayerTurn] = useState(PLAYER_X);
-    const [nextPlayer, setNextPlayer] = useState<nextPlayerType>(null);
+    const [nextPlayer, setNextPlayer] = useState<nextPlayerType>(`Next player: ${PLAYER_X}`);
     const [strikeClass, setStrikeClass] = useState('');
     const [gameState, setGameState] = useState(GameState.inProgress);
     const handleReset = () => {
@@ -63,8 +63,11 @@ function TicTacToe(){
     }
 
     const handleTileClick = (index: number) => {
-        if(gameState !== GameState.inProgress) return;
-        //when tile hava value dont render value again
+        //nếu một trong 2 player win thì game sẽ dừng
+        if(gameState !== GameState.inProgress){
+            return;
+        } 
+        //check xem tile đã có giá trị hay chưa 
         if(tiles[index] !== null){
             return;
         }
@@ -89,14 +92,15 @@ function TicTacToe(){
     return (
         <div>
             <h1>Tic Tac Toe</h1>
-            <Board 
+            <Board
+                dataTestBoardId='board-component'
                 tiles={tiles}
                 onTileClick={handleTileClick}
                 playerTurn={playerTurn}
                 strikeClass={strikeClass}
             />
             <p>{nextPlayer}</p>
-            <GameOver gameState={gameState}/>
+            <GameOver dataTestStateId='state-component' gameState={gameState}/>
             <Reset dataTestId='reset-test' gameState={gameState} onReset={handleReset}/>
         </div>
     );
